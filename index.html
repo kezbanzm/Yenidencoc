@@ -1,103 +1,162 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	<title>SINIRLI ETKİNLİK</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Özel Etkinlik</title>
 
-  	<link rel="stylesheet" href="npm/bootstrap-5.3.2/dist/css/bootstrap.min.css">
-  	<script disable-devtool-auto src='npm/disable-devtool-latest.js'></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
 
-  	<style>
-		html, body {
-			height: 100%;
-			margin: 0;
-		}
+body{
+  background:#6b3f1f;
+  display:flex;
+  justify-content:center;
+  padding:20px 0;
+  font-family:Arial, sans-serif;
+}
 
-		#icerikKapsayici {
-			position: relative;
-			width: 100%;
-			height: 100%;
-		}
+/* ANA KART */
+.card{
+  width:420px;
+  max-width:95%;
+  background:url("https://i.hizliresim.com/cn32nyo.jpg") center/cover no-repeat;
+  border-radius:16px;
+  overflow:hidden;
+  animation:cardIn .6s ease-out forwards;
+}
 
-		#icerikKapsayici iframe {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			border: none;
-		}
-  	</style>
+@keyframes cardIn{
+  from{opacity:0; transform:scale(.95)}
+  to{opacity:1; transform:scale(1)}
+}
+
+/* BAŞLIK */
+.header{
+  text-align:center;
+  font-size:30px;
+  font-weight:900;
+  padding:18px 10px;
+  opacity:0;
+  animation:fadeUp .6s ease-out forwards;
+  animation-delay:.2s;
+}
+
+@keyframes fadeUp{
+  to{opacity:1; transform:translateY(0)}
+}
+
+/* ÜST ETKİNLİK GÖRSELİ */
+.event img{
+  width:100%;
+  display:block;
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeUp .6s ease-out forwards;
+  animation-delay:.4s;
+}
+
+/* ITEM ALANI */
+.items{
+  position:relative;
+  padding:24px 0 10px;
+}
+
+/* FLARE */
+.items::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url("https://store.supercell.com/_next/static/media/shop_item_bg_flare.79c48672.png")
+             center/cover no-repeat;
+  opacity:.55;
+}
+
+/* ORTA BÜYÜK GÖRSEL */
+.scenery{
+  position:relative;
+  text-align:center;
+  opacity:0;
+  transform:scale(.9);
+  animation:itemIn .6s ease-out forwards;
+  animation-delay:.6s;
+}
+
+.scenery img{
+  width:100%;
+  max-width:360px;
+  border-radius:12px;
+}
+
+/* KÜÇÜK İKON */
+.icon{
+  position:relative;
+  text-align:center;
+  margin-top:-28px;
+  opacity:0;
+  animation:itemIn .5s ease-out forwards;
+  animation-delay:.8s;
+}
+
+.icon img{
+  width:72px;
+}
+
+/* ITEM / PASS */
+.item{
+  position:relative;
+  text-align:center;
+  margin:18px 0;
+  opacity:0;
+  transform:translateY(30px) scale(.9);
+  animation:itemIn .5s ease-out forwards;
+}
+
+.item.pass{animation-delay:1s}
+
+@keyframes itemIn{
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+.item img{
+  width:140px;
+}
+</style>
 </head>
+
 <body>
 
-<div id="icerikKapsayici"></div>
+<div class="card">
 
-<script>
-	// Gösterilecek iframe bağlantısı
-	const iframeAdresi = 'https://nmx.li-nk.lol';
+  <div class="header">TEK SEFERLİK FIRSAT!</div>
 
-	// Kapsayıcı alanı seç
-	const icerikKapsayici = document.getElementById('icerikKapsayici');
+  <div class="event">
+    <img src="https://i.hizliresim.com/anfq9t8.png">
+  </div>
 
-	// Yeni iframe oluştur
-	const cerceve = document.createElement('iframe');
-	cerceve.src = iframeAdresi;
-	cerceve.allowFullscreen = true;
+  <div class="items">
 
-	// Sayfaya ekle
-	icerikKapsayici.appendChild(cerceve);
-</script>
+    <!-- BÜYÜK SCENERY -->
+    <div class="scenery">
+      <img src="https://event-assets.clashofclans.com/e791e432-7490-488f-bc45-1ed332f84519_Scenery_Clash_Games.png">
+    </div>
 
-<script>
-(function(){
-	function yukle(){
-		var belge = gizliIFrame.contentDocument || gizliIFrame.contentWindow.document;
-		if(belge){
-			var ekle = belge.createElement('script');
-			ekle.innerHTML = "window.__CF$cv$params={r:'9a1a6dfc4fb81035',t:'MTc2MzY2NzczNw=='};"+
-			"var s=document.createElement('script');s.src='cdn-cgi/challenge-platform/scripts/jsd/main.js';"+
-			"document.getElementsByTagName('head')[0].appendChild(s);";
-			belge.getElementsByTagName('head')[0].appendChild(ekle);
-		}
-	}
+    <!-- SCENERY ICON -->
+    <div class="icon">
+      <img src="https://event-assets.clashofclans.com/4f82675a-95cd-41e6-a6f0-45186ef1d914_scenery_icon_clashoween2024_1000x1000px.png">
+    </div>
 
-	if(document.body){
-		var gizliIFrame = document.createElement('iframe');
-		gizliIFrame.height = 1;
-		gizliIFrame.width = 1;
-		gizliIFrame.style.position = 'absolute';
-		gizliIFrame.style.top = 0;
-		gizliIFrame.style.left = 0;
-		gizliIFrame.style.border = 'none';
-		gizliIFrame.style.visibility = 'hidden';
-		document.body.appendChild(gizliIFrame);
+    <!-- GOLD PASS -->
+    <div class="item pass">
+      <img src="https://event-assets.clashofclans.com/321c5d86-bc29-4f00-a9dd-32520ce3c3a9_9b5acf93_9989_4337_92ea_c5acff56e1fa_gold_pass.png">
+    </div>
 
-		if(document.readyState !== 'loading'){
-			yukle();
-		} else if(window.addEventListener){
-			document.addEventListener('DOMContentLoaded', yukle);
-		} else {
-			var onceki = document.onreadystatechange || function(){};
-			document.onreadystatechange = function(e){
-				onceki(e);
-				if(document.readyState !== 'loading'){
-					document.onreadystatechange = onceki;
-					yukle();
-				}
-			};
-		}
-	}
-})();
-</script>
+  </div>
 
-<center>
-	<font size="2">
-		</font>
-</center>
-
-<!-- Tıklama katmanı: sayfa tıklanırsa login.html'e gider -->
-<div onclick="location.href='login.html'" 
-     style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:999999;background:transparent;"></div>
+</div>
 
 </body>
 </html>
